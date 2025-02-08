@@ -3,13 +3,12 @@
 import { useState } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { Menu, X } from "lucide-react"
+import { Menu, X, Code2 } from "lucide-react"
 import ThemeToggle from "./ThemeToggle"
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const pathname = usePathname()
-  const isPostsPage = pathname === "/posts"
 
   return (
     <nav className="bg-white dark:bg-gray-800 shadow-md">
@@ -24,19 +23,42 @@ export default function Navbar() {
             <div className="ml-10 flex items-baseline space-x-4">
               <Link
                 href="/"
-                className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                className={`px-3 py-2 rounded-md text-sm font-medium ${
+                  pathname === "/" ? "text-gray-900 dark:text-white" : "text-gray-600 dark:text-gray-300"
+                }`}
               >
                 Home
               </Link>
               <Link
                 href="/posts"
-                className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                className={`px-3 py-2 rounded-md text-sm font-medium ${
+                  pathname === "/posts" ? "text-gray-900 dark:text-white" : "text-gray-600 dark:text-gray-300"
+                }`}
               >
                 Snippets
               </Link>
               <Link
+                href="/scraping"
+                className={`px-3 py-2 rounded-md text-sm font-medium ${
+                  pathname === "/scraping" ? "text-gray-900 dark:text-white" : "text-gray-600 dark:text-gray-300"
+                }`}
+              >
+                <Code2 className="inline-block w-4 h-4 mr-1" />
+                Scraping
+              </Link>
+              <Link
+                href="/admin/portfolio"
+                className={`px-3 py-2 rounded-md text-sm font-medium ${
+                  pathname === "/admin/portfolio" ? "text-gray-900 dark:text-white" : "text-gray-600 dark:text-gray-300"
+                }`}
+              >
+                Admin Portfolio
+              </Link>
+              <Link
                 href="/about"
-                className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                className={`px-3 py-2 rounded-md text-sm font-medium ${
+                  pathname === "/about" ? "text-gray-900 dark:text-white" : "text-gray-600 dark:text-gray-300"
+                }`}
               >
                 About
               </Link>
@@ -65,19 +87,42 @@ export default function Navbar() {
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             <Link
               href="/"
-              className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+              className={`block px-3 py-2 rounded-md text-base font-medium ${
+                pathname === "/" ? "text-gray-900 dark:text-white" : "text-gray-600 dark:text-gray-300"
+              }`}
             >
               Home
             </Link>
             <Link
               href="/posts"
-              className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+              className={`block px-3 py-2 rounded-md text-base font-medium ${
+                pathname === "/posts" ? "text-gray-900 dark:text-white" : "text-gray-600 dark:text-gray-300"
+              }`}
             >
               Snippets
             </Link>
             <Link
+              href="/scraping"
+              className={`block px-3 py-2 rounded-md text-base font-medium ${
+                pathname === "/scraping" ? "text-gray-900 dark:text-white" : "text-gray-600 dark:text-gray-300"
+              }`}
+            >
+              <Code2 className="inline-block w-4 h-4 mr-1" />
+              Scraping
+            </Link>
+            <Link
+              href="/admin/portfolio"
+              className={`block px-3 py-2 rounded-md text-base font-medium ${
+                pathname === "/admin/portfolio" ? "text-gray-900 dark:text-white" : "text-gray-600 dark:text-gray-300"
+              }`}
+            >
+              Admin Portfolio
+            </Link>
+            <Link
               href="/about"
-              className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+              className={`block px-3 py-2 rounded-md text-base font-medium ${
+                pathname === "/about" ? "text-gray-900 dark:text-white" : "text-gray-600 dark:text-gray-300"
+              }`}
             >
               About
             </Link>
