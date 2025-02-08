@@ -129,119 +129,123 @@ export default function AdminDashboard() {
   }
 
   return (
-    <div className="container mx-auto p-6 space-y-6">
+    <div className="container mx-auto p-4 sm:p-6 space-y-4 sm:space-y-6">
       <Card className="bg-gray-900 border-gray-800">
-        <CardHeader>
-          <CardTitle className="text-2xl text-white">Admin Dashboard</CardTitle>
-          <CardDescription className="text-gray-400">Manage your code snippets and monitor activity</CardDescription>
+        <CardHeader className="p-4 sm:p-6">
+          <CardTitle className="text-xl sm:text-2xl text-white">Admin Dashboard</CardTitle>
+          <CardDescription className="text-sm sm:text-base text-gray-400">
+            Manage your code snippets and monitor activity
+          </CardDescription>
         </CardHeader>
       </Card>
 
-      <Tabs defaultValue="upload" className="space-y-6">
-        <TabsList className="bg-gray-800">
-          <TabsTrigger value="upload" className="data-[state=active]:bg-gray-700">
+      <Tabs defaultValue="upload" className="space-y-4 sm:space-y-6">
+        <TabsList className="bg-gray-800 flex flex-wrap justify-start sm:justify-center">
+          <TabsTrigger value="upload" className="data-[state=active]:bg-gray-700 flex-grow sm:flex-grow-0">
             <Upload className="w-4 h-4 mr-2" />
-            Upload Code
+            <span className="hidden sm:inline">Upload Code</span>
           </TabsTrigger>
-          <TabsTrigger value="manage" className="data-[state=active]:bg-gray-700">
+          <TabsTrigger value="manage" className="data-[state=active]:bg-gray-700 flex-grow sm:flex-grow-0">
             <Trash2 className="w-4 h-4 mr-2" />
-            Manage Code
+            <span className="hidden sm:inline">Manage Code</span>
           </TabsTrigger>
-          <TabsTrigger value="analytics" className="data-[state=active]:bg-gray-700">
+          <TabsTrigger value="analytics" className="data-[state=active]:bg-gray-700 flex-grow sm:flex-grow-0">
             <BarChart className="w-4 h-4 mr-2" />
-            Analytics
+            <span className="hidden sm:inline">Analytics</span>
           </TabsTrigger>
-          <TabsTrigger value="users" className="data-[state=active]:bg-gray-700">
+          <TabsTrigger value="users" className="data-[state=active]:bg-gray-700 flex-grow sm:flex-grow-0">
             <Users className="w-4 h-4 mr-2" />
-            Users
+            <span className="hidden sm:inline">Users</span>
           </TabsTrigger>
         </TabsList>
 
         <TabsContent value="upload">
           <Card className="bg-gray-900 border-gray-800">
-            <CardHeader>
-              <CardTitle className="text-white">Upload New Code Snippet</CardTitle>
+            <CardHeader className="p-4 sm:p-6">
+              <CardTitle className="text-white text-lg sm:text-xl">Upload New Code Snippet</CardTitle>
             </CardHeader>
-            <CardContent>
+            <CardContent className="p-4 sm:p-6">
               <form onSubmit={handleSubmit} className="space-y-4">
-                <div>
-                  <Input
-                    placeholder="Title (Required)"
-                    value={formData.title}
-                    onChange={(e) => setFormData((prev) => ({ ...prev, title: e.target.value }))}
-                    className="bg-gray-800 border-gray-700 text-white"
-                    required
-                  />
-                </div>
-                <div>
-                  <Textarea
-                    placeholder="Description (Required)"
-                    value={formData.description}
-                    onChange={(e) => setFormData((prev) => ({ ...prev, description: e.target.value }))}
-                    className="bg-gray-800 border-gray-700 text-white min-h-[100px]"
-                    required
-                  />
-                </div>
-                <div>
-                  <Textarea
-                    placeholder="Code (Required)"
-                    value={formData.code}
-                    onChange={(e) => setFormData((prev) => ({ ...prev, code: e.target.value }))}
-                    className="bg-gray-800 border-gray-700 text-white min-h-[200px]"
-                    required
-                  />
-                </div>
-                <div>
-                  <Input
-                    type="file"
-                    accept=".js"
-                    onChange={handleFileChange}
-                    className="bg-gray-800 border-gray-700 text-white"
-                  />
-                </div>
-                <div>
-                  <Select
-                    value={formData.category}
-                    onValueChange={(value) =>
-                      setFormData((prev) => ({
-                        ...prev,
-                        category: value,
-                        pluginType: value === "PLUGINS" ? "ESM" : "",
-                      }))
-                    }
-                  >
-                    <SelectTrigger className="bg-gray-800 border-gray-700 text-white">
-                      <SelectValue placeholder="Select category" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="CASE">CASE</SelectItem>
-                      <SelectItem value="PLUGINS">PLUGINS</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-                {formData.category === "PLUGINS" && (
+                <div className="grid gap-4 sm:grid-cols-2">
+                  <div className="sm:col-span-2">
+                    <Input
+                      placeholder="Title (Required)"
+                      value={formData.title}
+                      onChange={(e) => setFormData((prev) => ({ ...prev, title: e.target.value }))}
+                      className="bg-gray-800 border-gray-700 text-white"
+                      required
+                    />
+                  </div>
+                  <div className="sm:col-span-2">
+                    <Textarea
+                      placeholder="Description (Required)"
+                      value={formData.description}
+                      onChange={(e) => setFormData((prev) => ({ ...prev, description: e.target.value }))}
+                      className="bg-gray-800 border-gray-700 text-white min-h-[100px]"
+                      required
+                    />
+                  </div>
+                  <div className="sm:col-span-2">
+                    <Textarea
+                      placeholder="Code (Required)"
+                      value={formData.code}
+                      onChange={(e) => setFormData((prev) => ({ ...prev, code: e.target.value }))}
+                      className="bg-gray-800 border-gray-700 text-white min-h-[200px]"
+                      required
+                    />
+                  </div>
+                  <div className="sm:col-span-2">
+                    <Input
+                      type="file"
+                      accept=".js"
+                      onChange={handleFileChange}
+                      className="bg-gray-800 border-gray-700 text-white"
+                    />
+                  </div>
                   <div>
                     <Select
-                      value={formData.pluginType}
-                      onValueChange={(value) => setFormData((prev) => ({ ...prev, pluginType: value }))}
+                      value={formData.category}
+                      onValueChange={(value) =>
+                        setFormData((prev) => ({
+                          ...prev,
+                          category: value,
+                          pluginType: value === "PLUGINS" ? "ESM" : "",
+                        }))
+                      }
                     >
                       <SelectTrigger className="bg-gray-800 border-gray-700 text-white">
-                        <SelectValue placeholder="Select plugin type" />
+                        <SelectValue placeholder="Select category" />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="ESM">ESM</SelectItem>
-                        <SelectItem value="CJS">CJS</SelectItem>
+                        <SelectItem value="CASE">CASE</SelectItem>
+                        <SelectItem value="PLUGINS">PLUGINS</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
-                )}
-                <div>
-                  <Input
-                    placeholder="Watermark (Optional)"
-                    value={formData.watermark}
-                    onChange={(e) => setFormData((prev) => ({ ...prev, watermark: e.target.value }))}
-                    className="bg-gray-800 border-gray-700 text-white"
-                  />
+                  {formData.category === "PLUGINS" && (
+                    <div>
+                      <Select
+                        value={formData.pluginType}
+                        onValueChange={(value) => setFormData((prev) => ({ ...prev, pluginType: value }))}
+                      >
+                        <SelectTrigger className="bg-gray-800 border-gray-700 text-white">
+                          <SelectValue placeholder="Select plugin type" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="ESM">ESM</SelectItem>
+                          <SelectItem value="CJS">CJS</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </div>
+                  )}
+                  <div className="sm:col-span-2">
+                    <Input
+                      placeholder="Watermark (Optional)"
+                      value={formData.watermark}
+                      onChange={(e) => setFormData((prev) => ({ ...prev, watermark: e.target.value }))}
+                      className="bg-gray-800 border-gray-700 text-white"
+                    />
+                  </div>
                 </div>
                 <Button
                   type="submit"
@@ -257,10 +261,10 @@ export default function AdminDashboard() {
 
         <TabsContent value="manage">
           <Card className="bg-gray-900 border-gray-800">
-            <CardHeader>
-              <CardTitle className="text-white">Manage Code Snippets</CardTitle>
+            <CardHeader className="p-4 sm:p-6">
+              <CardTitle className="text-white text-lg sm:text-xl">Manage Code Snippets</CardTitle>
             </CardHeader>
-            <CardContent>
+            <CardContent className="p-4 sm:p-6 overflow-x-auto">
               <CodeManagementTable snippets={snippets} onDelete={handleDelete} />
             </CardContent>
           </Card>
@@ -268,10 +272,10 @@ export default function AdminDashboard() {
 
         <TabsContent value="analytics">
           <Card className="bg-gray-900 border-gray-800">
-            <CardHeader>
-              <CardTitle className="text-white">Analytics</CardTitle>
+            <CardHeader className="p-4 sm:p-6">
+              <CardTitle className="text-white text-lg sm:text-xl">Analytics</CardTitle>
             </CardHeader>
-            <CardContent>
+            <CardContent className="p-4 sm:p-6">
               <div className="text-gray-400">Analytics features coming soon...</div>
             </CardContent>
           </Card>
@@ -279,10 +283,10 @@ export default function AdminDashboard() {
 
         <TabsContent value="users">
           <Card className="bg-gray-900 border-gray-800">
-            <CardHeader>
-              <CardTitle className="text-white">User Management</CardTitle>
+            <CardHeader className="p-4 sm:p-6">
+              <CardTitle className="text-white text-lg sm:text-xl">User Management</CardTitle>
             </CardHeader>
-            <CardContent>
+            <CardContent className="p-4 sm:p-6">
               <div className="text-gray-400">User management features coming soon...</div>
             </CardContent>
           </Card>

@@ -51,14 +51,14 @@ export default function CodeManagementTable({ snippets, onDelete }: CodeManageme
 
   return (
     <>
-      <div className="rounded-md border border-gray-800">
+      <div className="rounded-md border border-gray-800 overflow-hidden">
         <Table>
           <TableHeader>
             <TableRow className="hover:bg-gray-800/50">
               <TableHead className="text-gray-400">Title</TableHead>
-              <TableHead className="text-gray-400">Language</TableHead>
-              <TableHead className="text-gray-400">Author</TableHead>
-              <TableHead className="text-gray-400">Date</TableHead>
+              <TableHead className="text-gray-400 hidden sm:table-cell">Language</TableHead>
+              <TableHead className="text-gray-400 hidden md:table-cell">Author</TableHead>
+              <TableHead className="text-gray-400 hidden lg:table-cell">Date</TableHead>
               <TableHead className="text-gray-400 text-right">Actions</TableHead>
             </TableRow>
           </TableHeader>
@@ -66,9 +66,11 @@ export default function CodeManagementTable({ snippets, onDelete }: CodeManageme
             {snippets.map((snippet) => (
               <TableRow key={snippet.id} className="hover:bg-gray-800/50">
                 <TableCell className="font-medium text-gray-200">{snippet.title}</TableCell>
-                <TableCell className="text-gray-300">{snippet.language}</TableCell>
-                <TableCell className="text-gray-300">{snippet.author}</TableCell>
-                <TableCell className="text-gray-300">{new Date(snippet.date).toLocaleDateString()}</TableCell>
+                <TableCell className="text-gray-300 hidden sm:table-cell">{snippet.language}</TableCell>
+                <TableCell className="text-gray-300 hidden md:table-cell">{snippet.author}</TableCell>
+                <TableCell className="text-gray-300 hidden lg:table-cell">
+                  {new Date(snippet.date).toLocaleDateString()}
+                </TableCell>
                 <TableCell className="text-right">
                   <div className="flex justify-end gap-2">
                     <Button variant="ghost" size="icon" className="hover:bg-gray-800">
