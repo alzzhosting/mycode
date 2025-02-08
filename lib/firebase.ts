@@ -3,15 +3,14 @@ import { getAuth } from "firebase/auth"
 import { getFirestore } from "firebase/firestore"
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBq31VBs_WBGQA88Q_URZ1THQqPI-t4-ek",
-  authDomain: "chatapps-fa68f.firebaseapp.com",
-  databaseURL: "https://chatapps-fa68f-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "chatapps-fa68f",
-  storageBucket: "chatapps-fa68f.firebasestorage.app",
-  messagingSenderId: "432556455261",
-  appId: "1:432556455261:web:6614a5e8c5303dd17724b4",
-  measurementId: "G-LSJKHEDF66",
-}
+    apiKey: "AIzaSyDPIwc2K7hzmmawpr2KdCvQH0dOghjrkD8",
+    authDomain: "mycode-8f120.firebaseapp.com",
+    projectId: "mycode-8f120",
+    storageBucket: "mycode-8f120.firebasestorage.app",
+    messagingSenderId: "59759682993",
+    appId: "1:59759682993:web:da4f8569f040c9a1dc8990",
+    measurementId: "G-F35PMEBBEG"
+  };
 
 const app = initializeApp(firebaseConfig)
 export const auth = getAuth(app)
