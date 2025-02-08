@@ -47,14 +47,6 @@ export default function Navbar() {
                 Scraping
               </Link>
               <Link
-                href="/admin/portfolio"
-                className={`px-3 py-2 rounded-md text-sm font-medium ${
-                  pathname === "/admin/portfolio" ? "text-gray-900 dark:text-white" : "text-gray-600 dark:text-gray-300"
-                }`}
-              >
-                Admin Portfolio
-              </Link>
-              <Link
                 href="/about"
                 className={`px-3 py-2 rounded-md text-sm font-medium ${
                   pathname === "/about" ? "text-gray-900 dark:text-white" : "text-gray-600 dark:text-gray-300"
@@ -111,14 +103,6 @@ export default function Navbar() {
               Scraping
             </Link>
             <Link
-              href="/admin/portfolio"
-              className={`block px-3 py-2 rounded-md text-base font-medium ${
-                pathname === "/admin/portfolio" ? "text-gray-900 dark:text-white" : "text-gray-600 dark:text-gray-300"
-              }`}
-            >
-              Admin Portfolio
-            </Link>
-            <Link
               href="/about"
               className={`block px-3 py-2 rounded-md text-base font-medium ${
                 pathname === "/about" ? "text-gray-900 dark:text-white" : "text-gray-600 dark:text-gray-300"
@@ -132,4 +116,3 @@ export default function Navbar() {
     </nav>
   )
 }
-
