@@ -1,5 +1,6 @@
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
+import VisitorCounter from "./components/VisitorCounter"
 
 export default function Home() {
   return (
@@ -8,6 +9,9 @@ export default function Home() {
       <p className="text-xl mb-8 max-w-2xl">
         Discover, share, and learn from a vast collection of code snippets across various programming languages.
       </p>
+
+      <VisitorCounter />
+
       <Link href="/posts">
         <Button size="lg">Get Started</Button>
       </Link>
